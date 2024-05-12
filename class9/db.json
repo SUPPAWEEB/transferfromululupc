@@ -1,0 +1,28 @@
+{
+  "drugs": [
+    {
+      "drugname": "purple haze",
+      "price": 100,
+      "description": "das good shit",
+      "id": "420b"
+    },
+    {
+      "drugname": "yessssss",
+      "price": "finaly",
+      "description": "",
+      "id": "cba2"
+    },
+    {
+      "drugname": "or ",
+      "price": "does ",
+      "description": "it ",
+      "id": "e99f"
+    },
+    {
+      "id": "870b",
+      "drugname": "simon",
+      "price": "free",
+      "description": "the strongest drug "
+    }
+  ]
+}

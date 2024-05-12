@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="player" style="position: absolute;">player</button>
+    <script>
+        var buttMOVE = 1
+        var timesMV = 0
+        var changeDirect;
+        var buttMOVE2 = 1
+        var timesMV2 = 0
+        var newDirect;
+        function moveBUTTleft(params) {
+            buttMOVE += 20
+            player.style.left = buttMOVE + "px"
+            timesMV++
+            if (timesMV >= 10) {
+                clearInterval(changeDirect);
+            }
+        }
+        function moveBUTTright(params) {
+            buttMOVE2 += 20
+            player.style.right = buttMOVE2 + "px"
+            timesMV2++
+            if (timesMV2 >= 10) {
+                clearInterval(newDirect);
+            }
+        }
+        changeDirect = setInterval(moveBUTTleft, 1000);
+        newDirect = setInterval(moveBUTTright,1000)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h2>
+        Silk road admin access
+    </h2>
+    <hr>
+    <button onclick="loadData()">load info</button>
+    <button onclick="addData()">add drug</button>
+    Name <input id="dname">
+    Price <input id="price">
+    Discription<input id="description">
+    Item Id <input id="drugid">
+    <div id="display"></div>
+
+    <script>
+        const server = "http://localhost:3000/drugs"
+        let allDrugs = []
+        function onload() {
+            
+        }
+        
+        const biuldDisplay = () => {
+    display.innerHTML = allDrugs.map(drug => `<div> name:${drug.drugname} price:${drug.price} description:${drug.description} id:${drug.id} <button onclick="delData('${drug.id}')">delete drug</button>
+    <button onclick="updData('${drug.id}')">change drug</button></div>`);
+    }
+
+                const loadData =async () =>{ 
+            await axios.get(server).then(res => allDrugs=res.data)
+            biuldDisplay()
+            console.log(allDrugs);
+        }
+        
+        const addData = () => axios.post(server, {
+            drugname: dname.value, price: price.value, description: description.value
+        }).then(response => console.log(response))
+      
+const delData = (drugid) => {
+    const urlid = `${server}/${drugid}`;
+    axios.delete(urlid).then(response => {
+        console.log(response);
+        loadData();
+    });
+}
+
+
+        const updData = (drugid) => {
+    const url2 = `${server}/${drugid}`;
+            axios.put( url2, 
+            {drugname: dname.value, price: price.value, description: description.value })
+                .then(response => console.log(response));
+        }
+onload(loadData());
+    </script>
+</body>
+
+</html>

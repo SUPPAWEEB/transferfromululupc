@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Chose your backround color</h2>
+    <input type="color" onchange="saveColor()">
+
+    <script>
+function saveColor() {
+    var colorInput = document.querySelector('input[type="color"]');
+    var selectedColor = colorInput.value;
+            console.log("Selected color:", selectedColor);
+            localStorage.setItem("favcolour",selectedColor)
+}
+function changeBackcolor() {
+    var selectedColor = localStorage.getItem("favcolour");
+    if(selectedColor) {
+                document.body.style.backgroundColor = selectedColor;
+    
+}
+}
+window.onload = changeBackcolor;
+    </script>
+</body>
+</html>
